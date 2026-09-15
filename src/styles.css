@@ -1,0 +1,68 @@
+@import 'tailwindcss';
+
+@theme {
+  /* Paleta: 5 cores — 3 neutros + 1 marca + 1 acento */
+  --color-background: #08090c;
+  --color-surface: #101218;
+  --color-border: #1e222c;
+  --color-foreground: #eef1f6;
+  --color-muted: #8b93a3;
+  --color-brand: #22e0d4;
+  --color-brand-ink: #04120f;
+  --color-accent: #f5d90a;
+
+  --font-sans: 'Archivo', ui-sans-serif, system-ui, sans-serif;
+  --font-display: 'Barlow Condensed', 'Archivo', sans-serif;
+
+  --radius: 0.5rem;
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    line-height: 1.6;
+  }
+
+  ::selection {
+    background-color: var(--color-brand);
+    color: var(--color-brand-ink);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-brand);
+    outline-offset: 2px;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+  }
+}
+
+@utility font-display {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  line-height: 0.95;
+}
+
+/* Grade técnica sutil de fundo — assinatura visual do layout */
+@utility bg-grid {
+  background-image: linear-gradient(
+      to right,
+      color-mix(in oklab, var(--color-border) 55%, transparent) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      to bottom,
+      color-mix(in oklab, var(--color-border) 55%, transparent) 1px,
+      transparent 1px
+    );
+  background-size: 72px 72px;
+}
